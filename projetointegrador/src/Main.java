@@ -53,13 +53,13 @@ public class Main {
                                 System.out.println("Digite o valor a ser depositado: R$ ");
                                 double valorDeposito = scanner.nextDouble();
                                 cc.depositar(valorDeposito);
-                                System.out.println("Depósito realizado com sucesso.");
+                                System.out.println("Depósito realizado com sucesso!");
                                 break;
                             case 2:
                                 System.out.println("Digite o valor a ser sacado: R$ ");
                                 double valorSaque = scanner.nextDouble();
                                 if (cc.sacar(valorSaque)) {
-                                    System.out.println("Saque realizado com sucesso.");
+                                    System.out.println("Saque realizado com sucesso!");
                                 } else {
                                     System.out.println("Saldo insuficiente.");
                                 }
@@ -91,16 +91,7 @@ public class Main {
 
                         switch (opcaoCartao) {
                             case 1:
-                                /*System.out.print("Informe o dia da compra: ");
-                                int dia = scanner.nextInt();
-                                System.out.print("Informe o valor da compra: ");
-                                double valor = scanner.nextDouble();
-                                scanner.nextLine(); // Consumir o buffer do teclado
-                                System.out.print("Informe a loja da compra: ");
-                                String loja = scanner.nextLine();*/
-
                                 cartao.efetuarCompra();
-                                //System.out.println("Compra efetuada com sucesso!");
                                 break;
                             case 2:
                                 cartao.listarCompras();
@@ -137,7 +128,7 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("================================================================");
-                    System.out.println("O EFS3Bank agradece sua visita, " + nomeCliente + "!");
+                    System.out.println("O EFS3Bank agradece a sua visita, " + nomeCliente + "!");
                     System.out.println(" Até breve!");
                     break;
                 default:
