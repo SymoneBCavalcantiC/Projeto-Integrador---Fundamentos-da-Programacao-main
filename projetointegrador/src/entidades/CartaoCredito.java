@@ -77,6 +77,12 @@ public class CartaoCredito {
             System.out.printf("Data: %s | Loja: %s | Valor: R$ %.2f\n",
                     compra.getData(), compra.getLoja(), compra.getValor());
         }
+
+        double soma = 0;
+        for (Compra compra : this.compras) {
+            soma += compra.getValor();
+        }
+        System.out.printf("Somatório das compras: R$ %.2f\n", soma);
     }
 
     public void emitirFatura() {
