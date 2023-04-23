@@ -14,19 +14,22 @@ public class Main {
         CartaoCredito cartao = new CartaoCredito(10000);
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Bem-vindo ao EFS3Bank! Qual é o seu nome?");
+        System.out.println("Bem-vindo ao EFS3Bank!");
+        System.out.println("Qual é o seu nome?");
         String nomeCliente = scanner.nextLine();
         System.out.println("Olá, " + nomeCliente + "!");
         System.out.println("Sua conta está pronta e é uma alegria para nós atendê-lo(a).");
 
         int opcao = 0;
-        while (opcao != 5) {
+        while (opcao != 6) {
+            System.out.println("===============================================================");
             System.out.println("MENU INICIAL");
             System.out.println("1. Conta Corrente");
             System.out.println("2. Cartão de crédito");
-            System.out.println("3. Investimento");
+            System.out.println("3. Investimentos");
             System.out.println("4. Poupança");
-            System.out.println("5. Sair");
+            System.out.println("5. Transferências");
+            System.out.println("6. Sair");
             System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
             opcao = scanner.nextInt();
@@ -34,25 +37,26 @@ public class Main {
             switch (opcao) {
                 case 1:
                     int opcaoConta = 0;
-                    while (opcaoConta != 5) {
+                    while (opcaoConta != 4) {
+                        System.out.println("================================================================");
                         System.out.println("MENU: CONTA CORRENTE");
                         System.out.println("1. Depositar");
                         System.out.println("2. Sacar");
                         System.out.println("3. Consultar saldo");
-                        System.out.println("4. Voltar");
+                        System.out.println("4. Retornar ao Menu Inicial");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
                         opcaoConta = scanner.nextInt();
 
                         switch (opcaoConta) {
                             case 1:
-                                System.out.println("Digite o valor a ser depositado:");
+                                System.out.println("Digite o valor a ser depositado: R$ ");
                                 double valorDeposito = scanner.nextDouble();
                                 cc.depositar(valorDeposito);
                                 System.out.println("Depósito realizado com sucesso.");
                                 break;
                             case 2:
-                                System.out.println("Digite o valor a ser sacado:");
+                                System.out.println("Digite o valor a ser sacado: R$ ");
                                 double valorSaque = scanner.nextDouble();
                                 if (cc.sacar(valorSaque)) {
                                     System.out.println("Saque realizado com sucesso.");
@@ -61,9 +65,10 @@ public class Main {
                                 }
                                 break;
                             case 3:
-                                System.out.println("Saldo disponível: " + cc.getSaldo());
+                                System.out.println("Saldo disponível R$: " + cc.getSaldo());
                                 break;
                             case 4:
+                                System.out.println("Retornando ao Menu Inicial");
                                 break;
                             default:
                                 System.out.println("Opção inválida. Tente novamente");
@@ -75,26 +80,27 @@ public class Main {
                 case 2:
                     int opcaoCartao = 0;
                     while (opcaoCartao != 4) {
+                        System.out.println("================================================================");
                         System.out.println("MENU: CARTÃO DE CRÉDITO");
                         System.out.println("1. Efetuar uma compra");
                         System.out.println("2. Listar histórico de compras");
                         System.out.println("3. Emitir a fatura mensal");
-                        System.out.println("4. Voltar");
+                        System.out.println("4. Retornar ao Menu Inicial");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
                         opcaoCartao = scanner.nextInt();
 
                         switch (opcaoCartao) {
                             case 1:
-                                System.out.print("Informe o dia da compra: ");
+                                /*System.out.print("Informe o dia da compra: ");
                                 int dia = scanner.nextInt();
                                 System.out.print("Informe o valor da compra: ");
                                 double valor = scanner.nextDouble();
                                 scanner.nextLine(); // Consumir o buffer do teclado
                                 System.out.print("Informe a loja da compra: ");
-                                String loja = scanner.nextLine();
+                                String loja = scanner.nextLine();*/
 
                                 cartao.efetuarCompra();
-                                System.out.println("Compra efetuada com sucesso!");
+                                //System.out.println("Compra efetuada com sucesso!");
                                 break;
                             case 2:
                                 cartao.listarCompras();
@@ -103,7 +109,7 @@ public class Main {
                                 cartao.emitirFatura();
                                 break;
                             case 4:
-                                System.out.println("Retornando ao Menu Inicial...");
+                                System.out.println("Retornando ao Menu Inicial");
                                 break;
                             default:
                                 System.out.println("Opção inválida! Tente novamente.");
@@ -113,12 +119,26 @@ public class Main {
                     break;
                 case 3:
                     // Código para a classe Investimento
+                    System.out.println("MENU: INVESTIMENTOS");
+                    System.out.println("Em desenvolvimento");
+                    System.out.println("Retornando ao Menu Inicial.");
                     break;
                 case 4:
                     //Código para a classe Poupança
+                    System.out.println("MENU: POUPANÇA");
+                    System.out.println("Em desenvolvimento");
+                    System.out.println("Retornando ao Menu Inicial.");
                     break;
                 case 5:
-                    System.out.println("Encerrando o programa...");
+                    //Código para a classe Transferência
+                    System.out.println("MENU: TRANSFERÊNCIAS");
+                    System.out.println("Em desenvolvimento");
+                    System.out.println("Retornando ao Menu Inicial.");
+                    break;
+                case 6:
+                    System.out.println("================================================================");
+                    System.out.println("O EFS3Bank agradece sua visita, " + nomeCliente + "!");
+                    System.out.println(" Até breve!");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");
@@ -128,10 +148,7 @@ public class Main {
 
         scanner.close();
 
-
-
-
-
+        /*
         cc.atualizarSaldo();
         cp.atualizarSaldo();
         ci.atualizarSaldo();
@@ -155,6 +172,7 @@ public class Main {
         System.out.println("Saldo da conta corrente após atualização: " + cc.getSaldo());
         System.out.println("Saldo da conta poupança após atualização: " + cp.getSaldo());
         System.out.println("Saldo da conta de investimento após atualização: " + ci.getSaldo());
+        */
 
 
     }

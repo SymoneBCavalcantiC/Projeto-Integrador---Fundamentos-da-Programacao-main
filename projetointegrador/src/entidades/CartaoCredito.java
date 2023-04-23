@@ -44,7 +44,7 @@ public class CartaoCredito {
         System.out.print("Digite o dia da compra: ");
         int dia = input.nextInt();
 
-        System.out.print("Digite o valor da compra: ");
+        System.out.print("Digite o valor da compra (R$): ");
         double valor = input.nextDouble();
 
         input.nextLine();
@@ -59,18 +59,20 @@ public class CartaoCredito {
         this.faturaMensal += valor - cashback;
 
         System.out.println("Compra realizada com sucesso!");
+        System.out.println("---------------------------------------------------------------");
         System.out.printf("Valor da compra: R$ %.2f\n", valor);
         System.out.printf("Cashback pela compra: R$ %.2f\n", cashback);
-        System.out.printf("Valor a pagar na fatura: R$ %.2f\n", this.faturaMensal);
+        System.out.printf("Valor a pagar na fatura mensal: R$ %.2f\n", this.faturaMensal);
     }
 
     public void listarCompras() {
         if (this.compras.size() == 0) {
-            System.out.println("Nenhuma compra realizada ainda.");
+            System.out.println("* Nenhuma compra realizada ainda.");
             return;
         }
 
-        System.out.println("Histórico de compras:");
+        System.out.println("HISTÓRICO DE COMPRAS:");
+        System.out.println("---------------------------------------------------------------");
         for (Compra compra : this.compras) {
             System.out.printf("Data: %s | Loja: %s | Valor: R$ %.2f\n",
                     compra.getData(), compra.getLoja(), compra.getValor());
@@ -79,7 +81,7 @@ public class CartaoCredito {
 
     public void emitirFatura() {
         if (this.compras.size() == 0) {
-            System.out.println("Nenhuma compra realizada ainda.");
+            System.out.println("* Nenhuma compra realizada ainda.");
             return;
         }
 
@@ -93,7 +95,7 @@ public class CartaoCredito {
 
         this.faturaMensal = totalCompras - cashbackAcumulado;
 
-        System.out.println("Fatura do mês:");
+        System.out.println("FATURA DO MÊS:");
         System.out.printf("Valor total das compras: R$ %.2f\n", totalCompras);
         System.out.printf("Montante acumulado de cashback: R$ %.2f\n", cashbackAcumulado);
         System.out.printf("Valor a pagar na fatura: R$ %.2f\n", this.faturaMensal);
