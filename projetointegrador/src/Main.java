@@ -20,13 +20,13 @@ public class Main {
         System.out.println("Sua conta está pronta e é uma alegria para nós atendê-lo(a).");
 
         int opcao = 0;
-        while (opcao != 4) {
+        while (opcao != 5) {
             System.out.println("MENU INICIAL");
             System.out.println("1. Conta Corrente");
             System.out.println("2. Cartão de crédito");
             System.out.println("3. Investimento");
-            System.out.println("3. Poupança");
-            System.out.println("4. Sair");
+            System.out.println("4. Poupança");
+            System.out.println("5. Sair");
             System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
             opcao = scanner.nextInt();
@@ -39,8 +39,7 @@ public class Main {
                         System.out.println("1. Depositar");
                         System.out.println("2. Sacar");
                         System.out.println("3. Consultar saldo");
-                        System.out.println("4. Emitir extrato");
-                        System.out.println("5. Voltar");
+                        System.out.println("4. Voltar");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
                         opcaoConta = scanner.nextInt();
@@ -65,9 +64,6 @@ public class Main {
                                 System.out.println("Saldo disponível: " + cc.getSaldo());
                                 break;
                             case 4:
-                                cc.emitirExtrato();
-                                break;
-                            case 5:
                                 break;
                             default:
                                 System.out.println("Opção inválida. Tente novamente");
@@ -78,13 +74,12 @@ public class Main {
 
                 case 2:
                     int opcaoCartao = 0;
-                    while (opcaoCartao != 5) {
-                        System.out.println("MENU: CONTA CORRENTE");
+                    while (opcaoCartao != 4) {
+                        System.out.println("MENU: CARTÃO DE CRÉDITO");
                         System.out.println("1. Efetuar uma compra");
                         System.out.println("2. Listar histórico de compras");
                         System.out.println("3. Emitir a fatura mensal");
-                        System.out.println("4. Pagar a fatura mensal");
-                        System.out.println("5. Voltar");
+                        System.out.println("4. Voltar");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
                         opcaoCartao = scanner.nextInt();
 
@@ -108,14 +103,7 @@ public class Main {
                                 cartao.emitirFatura();
                                 break;
                             case 4:
-                                System.out.print("Informe o valor da fatura a ser paga: ");
-                                double faturaMensal = scanner.nextDouble();
-                                scanner.nextLine(); // Consumir o buffer do teclado
-
-                                cartao.pagarFaturaMensal(faturaMensal);
-                                break;
-                            case 5:
-                                System.out.println("Voltando ao Menu Principal...");
+                                System.out.println("Retornando ao Menu Inicial...");
                                 break;
                             default:
                                 System.out.println("Opção inválida! Tente novamente.");
@@ -127,6 +115,9 @@ public class Main {
                     // Código para a classe Investimento
                     break;
                 case 4:
+                    //Código para a classe Poupança
+                    break;
+                case 5:
                     System.out.println("Encerrando o programa...");
                     break;
                 default:

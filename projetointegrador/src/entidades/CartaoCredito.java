@@ -99,16 +99,5 @@ public class CartaoCredito {
         System.out.printf("Valor a pagar na fatura: R$ %.2f\n", this.faturaMensal);
     }
 
-    public void pagarFaturaMensal(double valor, ContaCorrente conta) {
-
-        if (faturaMensal > ContaCorrente.getSaldo()) {
-            System.out.println("Saldo insuficiente para realizar o pagamento da fatura.");
-        } else {
-            ContaCorrente.debitarFatura(faturaMensal);//utiliza o método para debitar o valor da fatura na conta corrente
-            this.faturaMensal -= 0; //baixa o valor pago da fatura mensal
-            System.out.println("Fatura paga com sucesso!");
-        }
-
-    }
 }
 
