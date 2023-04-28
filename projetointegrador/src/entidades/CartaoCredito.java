@@ -75,12 +75,12 @@ public class CartaoCredito {
         System.out.println("---------------------------------------------------------------");
         for (Compra compra : this.compras) {
             System.out.printf("Data: %s | Loja: %s | Valor: R$ %.2f\n",
-                    compra.getData(), compra.getLoja(), compra.getValor());
+                    compra.getData(), compra.getLoja(), compra.getValorCompra());
         }
 
         double soma = 0;
         for (Compra compra : this.compras) {
-            soma += compra.getValor();
+            soma += compra.getValorCompra();
         }
         System.out.printf("Somatório das compras: R$ %.2f\n", soma);
     }
@@ -95,8 +95,8 @@ public class CartaoCredito {
         double cashbackAcumulado = 0.0;
 
         for (Compra compra : this.compras) {
-            totalCompras += compra.getValor();
-            cashbackAcumulado += compra.getValor() * 0.01;
+            totalCompras += compra.getValorCompra();
+            cashbackAcumulado += compra.getValorCompra() * 0.01;
         }
 
         this.faturaMensal = totalCompras - cashbackAcumulado;

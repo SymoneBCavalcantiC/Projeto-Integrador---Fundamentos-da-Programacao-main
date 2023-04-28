@@ -4,12 +4,12 @@ import java.time.LocalDate;
 
 public class Compra {
     private LocalDate data;
-    private double valor;
+    private double valorCompra;
     private String loja;
 
-    public Compra(LocalDate data, double valor, String loja) {
+    public Compra(LocalDate data, double valorCompra, String loja) {
         this.data = data;
-        this.valor = valor;
+        this.valorCompra = valorCompra;
         this.loja = loja;
     }
 
@@ -17,8 +17,8 @@ public class Compra {
         return data;
     }
 
-    public double getValor() {
-        return valor;
+    public double getValorCompra() {
+        return valorCompra;
     }
 
     public String getLoja() {

@@ -129,7 +129,7 @@ public class Main {
                 case 6:
                     System.out.println("================================================================");
                     System.out.println("O EFS3Bank agradece a sua visita, " + nomeCliente + "!");
-                    System.out.println(" Até breve!");
+                    System.out.println("Até breve! ;)");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");
