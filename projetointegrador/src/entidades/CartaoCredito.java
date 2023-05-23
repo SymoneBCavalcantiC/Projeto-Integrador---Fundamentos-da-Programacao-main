@@ -1,5 +1,4 @@
 package entidades;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -52,7 +51,7 @@ public class CartaoCredito {
         System.out.print("Digite o nome da loja: ");
         String loja = input.nextLine();
 
-        Compra novaCompra = new Compra(LocalDate.now(), valor, loja);
+        Compra novaCompra = new Compra(dia, valor, loja);
         this.compras.add(novaCompra);
 
         double cashback = valor * 0.01;
@@ -75,7 +74,7 @@ public class CartaoCredito {
         System.out.println("---------------------------------------------------------------");
         for (Compra compra : this.compras) {
             System.out.printf("Data: %s | Loja: %s | Valor: R$ %.2f\n",
-                    compra.getData(), compra.getLoja(), compra.getValorCompra());
+                    compra.getDia(), compra.getLoja(), compra.getValorCompra());
         }
 
         double soma = 0;
@@ -106,6 +105,10 @@ public class CartaoCredito {
         System.out.printf("Montante acumulado de cashback: R$ %.2f\n", cashbackAcumulado);
         System.out.printf("Valor a pagar na fatura: R$ %.2f\n", this.faturaMensal);
     }
+
+    /*public void debitarFatura(){
+        if(faturaMensal <= )
+    }*/
 
 }
 

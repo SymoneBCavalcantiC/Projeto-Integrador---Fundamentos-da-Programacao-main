@@ -3,18 +3,22 @@ package entidades;
 import java.time.LocalDate;
 
 public class Compra {
-    private LocalDate data;
+    private int dia;
     private double valorCompra;
     private String loja;
 
-    public Compra(LocalDate data, double valorCompra, String loja) {
-        this.data = data;
+    public Compra(int dia, double valorCompra, String loja) {
+        this.dia = dia;
         this.valorCompra = valorCompra;
         this.loja = loja;
     }
 
-    public LocalDate getData() {
-        return data;
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
     }
 
     public double getValorCompra() {
