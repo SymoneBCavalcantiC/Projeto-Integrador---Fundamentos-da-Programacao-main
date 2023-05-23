@@ -37,6 +37,7 @@ public class Main {
 
             switch (opcao) {
                 case 1:
+                    //Código para a Conta Corrente
                     int opcaoConta = 0;
                     while (opcaoConta != 4) {
                         System.out.println("================================================================");
@@ -79,6 +80,7 @@ public class Main {
                     break;
 
                 case 2:
+                    //Código para Cartão de crédito
                     int opcaoCartao = 0;
                     while (opcaoCartao != 4) {
                         System.out.println("================================================================");
