@@ -2,8 +2,6 @@ import entidades.*;
 
 import java.util.Scanner;
 
-
-
 public class Main {
 
     public static void main(String[] args) {
@@ -37,7 +35,7 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    //Código para a Conta Corrente
+                    //Código para a funcionalidade Conta Corrente
                     int opcaoConta = 0;
                     while (opcaoConta != 4) {
                         System.out.println("================================================================");
@@ -80,15 +78,16 @@ public class Main {
                     break;
 
                 case 2:
-                    //Código para Cartão de crédito
+                    //Código para a funcionalidade Cartão de crédito
                     int opcaoCartao = 0;
-                    while (opcaoCartao != 4) {
+                    while (opcaoCartao != 5) {
                         System.out.println("================================================================");
                         System.out.println("MENU: CARTÃO DE CRÉDITO");
                         System.out.println("1. Efetuar uma compra");
                         System.out.println("2. Listar histórico de compras");
                         System.out.println("3. Emitir a fatura mensal");
-                        System.out.println("4. Retornar ao Menu Inicial");
+                        System.out.println("4. Pagar a fatura mensal");
+                        System.out.println("5. Retornar ao Menu Inicial");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
                         opcaoCartao = scanner.nextInt();
 
@@ -103,6 +102,9 @@ public class Main {
                                 cartao.emitirFatura();
                                 break;
                             case 4:
+                                cartao.debitarFatura(cc1, cc2);
+                                break;
+                            case 5:
                                 System.out.println(">>> Retornando ao Menu Inicial");
                                 break;
                             default:
@@ -112,7 +114,7 @@ public class Main {
                     }
                     break;
                 case 3:
-                    // Código para a classe Investimento
+                    // Código para a funcionalidade Investimento
                     System.out.println("MENU: INVESTIMENTOS");
                     System.out.println("Em desenvolvimento");
                     System.out.println("Retornando ao Menu Inicial.");
@@ -124,7 +126,7 @@ public class Main {
                     System.out.println("Retornando ao Menu Inicial.");
                     break;
                 case 5:
-                    //Código para a classe Transferência
+                    //Código para a funcionalidade Transferência
                     int opcaoTransf = 0;
                     while (opcaoTransf != 3) {
                         System.out.println("================================================================");
@@ -282,6 +284,7 @@ public class Main {
                     break;
 
                 case 6:
+                    //Código para encerrar o programa
                     System.out.println("================================================================");
                     System.out.println("O EFS3Bank agradece a sua visita, " + nomeCliente + "!");
                     System.out.println("Até breve! ;)");
@@ -291,7 +294,6 @@ public class Main {
                     System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
                     break;
             }
-            //break;
            }
 
         scanner.close();

@@ -30,4 +30,7 @@ public class ContaCorrente extends Conta {
         saldo -= taxaDeManutencao;
 
     }
+    public void sacarDoLimite(double valor) {
+        saldo -= valor;
+    }
 }
