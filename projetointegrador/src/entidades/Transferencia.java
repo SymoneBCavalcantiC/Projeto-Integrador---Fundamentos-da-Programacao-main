@@ -27,8 +27,8 @@ public class Transferencia {
         while (opcaoTransferir != 5) {
             System.out.println("================================================================");
             System.out.println("SUBMENU: Efetuar transferência");
-            System.out.println("1. Transferir de Conta Corrente para Conta Corrente");
-            System.out.println("2. Transferir de Conta Corrente para Conta Poupança");
+            System.out.println("1. Transferir da Conta Corrente para Conta Corrente");
+            System.out.println("2. Transferir da Conta Corrente para Conta Poupança");
             System.out.println("3. Transferir da Conta Poupança para Conta Corrente");
             System.out.println("4. Transferir da Conta Poupança para Conta Poupança");
             System.out.println("5. Retornar ao Menu Inicial");

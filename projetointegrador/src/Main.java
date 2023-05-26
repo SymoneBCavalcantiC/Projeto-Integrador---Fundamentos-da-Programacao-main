@@ -52,20 +52,21 @@ public class Main {
                             case 1:
                                 System.out.println("Digite o valor a ser depositado: R$ ");
                                 double valorDeposito = scanner.nextDouble();
-                                cc1.depositar(valorDeposito);
-                                System.out.println("Depósito realizado com sucesso!");
+                                System.out.println("Digite o número da conta corrente: ");
+                                int numContaDeposito = scanner.nextInt();
+                                ContaCorrente.depositarContaCorrente(numContaDeposito, valorDeposito, cc1, cc2);
                                 break;
                             case 2:
                                 System.out.println("Digite o valor a ser sacado: R$ ");
                                 double valorSaque = scanner.nextDouble();
-                                if (cc1.sacar(valorSaque)) {
-                                    System.out.println("Saque realizado com sucesso!");
-                                } else {
-                                    System.out.println("Saldo insuficiente.");
-                                }
+                                System.out.println("Digite o número da conta corrente: ");
+                                int numContaSaque = scanner.nextInt();
+                                ContaCorrente.sacarContaCorrente(numContaSaque, valorSaque, cc1, cc2);
                                 break;
                             case 3:
-                                System.out.println("Saldo disponível R$: " + cc1.getSaldo());
+                                System.out.println("Digite o número da conta corrente: ");
+                                int numContaSaldo = scanner.nextInt();
+                                ContaCorrente.consultarSaldoContaCorrente(numContaSaldo, cc1, cc2);
                                 break;
                             case 4:
                                 System.out.println(">>> Retornando ao Menu Inicial");
@@ -128,7 +129,7 @@ public class Main {
                 case 5:
                     //Código para a funcionalidade Transferência
                     int opcaoTransf = 0;
-                    while (opcaoTransf != 3) {
+                    while (opcaoTransf != 2) {
                         System.out.println("================================================================");
                         System.out.println("MENU: TRANSFERÊNCIAS");
                         System.out.println("1. Efetuar transferência");
@@ -150,7 +151,7 @@ public class Main {
                                 System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
                                 break;
                         }
-                        break;
+                        //break;
                     }
                     break;
 
@@ -169,8 +170,7 @@ public class Main {
 
         scanner.close();
 
-        /*
-        cc.atualizarSaldo();
+        /*cc.atualizarSaldo();
         cp.atualizarSaldo();
         ci.atualizarSaldo();
 
@@ -192,8 +192,7 @@ public class Main {
 
         System.out.println("Saldo da conta corrente após atualização: " + cc.getSaldo());
         System.out.println("Saldo da conta poupança após atualização: " + cp.getSaldo());
-        System.out.println("Saldo da conta de investimento após atualização: " + ci.getSaldo());
-        */
+        System.out.println("Saldo da conta de investimento após atualização: " + ci.getSaldo());*/
 
 
     }

@@ -25,7 +25,7 @@ public abstract class Conta {
             saldo -= valor;
             return true;
         } else {
-            System.out.println("Saldo insuficiente!");
+            System.out.println(">>> Saldo insuficiente!");
             return false;
         }
 
