@@ -13,9 +13,9 @@ public class ContaInvestimento extends Conta {
         return taxaDeRetorno;
     }
 
-    @Override
+    /*@Override
     public void atualizarSaldo() {
         double rendimento = getSaldo() * taxaDeRetorno / 12; // taxa de retorno anual dividido por 12 meses
         saldo += rendimento;
-    }
+    }*/
 }

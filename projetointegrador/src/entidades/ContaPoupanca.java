@@ -12,9 +12,9 @@ public class ContaPoupanca extends Conta {
         return taxaDeRendimento;
     }
 
-    @Override
+    /*@Override
     public void atualizarSaldo() {
         double rendimento = getSaldo() * taxaDeRendimento;
         saldo += rendimento;
-    }
+    }*/
 }

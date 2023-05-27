@@ -152,8 +152,8 @@ public class Transferencia {
                 if (contaOrigem.sacar(valorTransferencia)) {
                     contaDestino.depositar(valorTransferencia);
                     System.out.println(">>> Transferência realizada com sucesso!");
-                    System.out.println(">>> Saldo atual da conta " + contaOrigem.getNumeroConta() + ": " + contaOrigem.getSaldo());
-                    System.out.println(">>> Saldo atual da conta " + contaDestino.getNumeroConta() + ": " + contaDestino.getSaldo());
+                    System.out.println(">>> Saldo atual da conta de origem" + contaOrigem.getNumeroConta() + ": " + contaOrigem.getSaldo());
+                    System.out.println(">>> Saldo atual da conta de destino" + contaDestino.getNumeroConta() + ": " + contaDestino.getSaldo());
                 } else {
                     System.out.println(">>> ATENÇÃO! Saldo insuficiente para realizar a transferência.");
                 }

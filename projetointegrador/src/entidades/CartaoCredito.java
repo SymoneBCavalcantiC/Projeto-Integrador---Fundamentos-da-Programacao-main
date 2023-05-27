@@ -135,7 +135,7 @@ public class CartaoCredito {
             } else {
                 double valorRestante = faturaMensal - contaCorrente.getSaldo();
                 contaCorrente.sacar(contaCorrente.getSaldo());
-                contaCorrente.sacarDoLimite(valorRestante);
+                contaCorrente.debitarDoLimite(valorRestante);
             }
 
             // Remover as compras quitadas da lista de compras

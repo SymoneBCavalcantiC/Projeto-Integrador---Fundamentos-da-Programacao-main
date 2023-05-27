@@ -36,9 +36,9 @@ public abstract class Conta {
     public void atualizarSaldo() {
     }
 
-    public void realizarSaque(double valor) {
+    /*public void realizarSaque(double valor) {
     }
 
     public void realizarDeposito(double valor) {
-    }
+    }*/
 }
