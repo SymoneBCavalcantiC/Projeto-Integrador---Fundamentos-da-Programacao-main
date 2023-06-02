@@ -7,9 +7,9 @@ public class Main {
     public static void main(String[] args) {
         ContaCorrente cc1 = new ContaCorrente(123, 1000, 500, 20);
         ContaCorrente cc2 = new ContaCorrente(321, 2000, 500, 20);
-        ContaPoupanca cp1 = new ContaPoupanca(456, 1500, 0.01);
-        ContaPoupanca cp2 = new ContaPoupanca(654, 2500, 0.01);
-        ContaInvestimento ci = new ContaInvestimento(789, 5000, 0.08);
+        ContaPoupanca cp1 = new ContaPoupanca(456);
+        ContaPoupanca cp2 = new ContaPoupanca(654);
+        ContaInvestimento ci = new ContaInvestimento(789, 0.08);
         CartaoCredito cartao = new CartaoCredito(10000);
 
         Scanner scanner = new Scanner(System.in);
@@ -122,17 +122,66 @@ public class Main {
                     break;
                 case 4:
                     //Código para a classe Poupança
-                    System.out.println("MENU: POUPANÇA");
-                    System.out.println("Em desenvolvimento");
-                    System.out.println("Retornando ao Menu Inicial.");
+                    int opcaoPoup = 0;
+                    while (opcaoPoup != 5) {
+                        System.out.println("================================================================");
+                        System.out.println("MENU: POUPANÇA");
+                        System.out.println("1. Aplicar em Poupança");
+                        System.out.println("2. Resgatar da poupança");
+                        System.out.println("3. Consultar saldo");
+                        System.out.println("4. Atualizar rendimentos: juros e correção monetária");
+                        System.out.println("5. Retornar ao Menu Inicial");
+
+                        opcaoPoup = scanner.nextInt();
+
+                        switch (opcaoPoup) {
+                            case 1:
+                                System.out.println("Digite o valor da aplicação: R$ ");
+                                double valorAplicacaoPoup = scanner.nextDouble();
+                                System.out.println("Digite o número da Conta Poupança: ");
+                                int numContaPoupanca = scanner.nextInt();
+                                ContaPoupanca.aplicarContaPoupanca(numContaPoupanca, valorAplicacaoPoup, cp1, cp2);
+                                break;
+
+                            case 2:
+                                System.out.println("Digite o valor do resgate: R$ ");
+                                double valorResgatePoup = scanner.nextDouble();
+                                System.out.println("Digite o número da Conta Poupança: ");
+                                int numCtPoupanca = scanner.nextInt();
+                                ContaPoupanca.resgatarContaPoupanca(numCtPoupanca, valorResgatePoup, cp1, cp2);
+                                break;
+
+                            case 3:
+                                System.out.println("Digite o número da Conta Poupança desejada: ");
+                                int numPoupanca = scanner.nextInt();
+                                ContaPoupanca.consultarSaldoPoupanca(numPoupanca, cp1, cp2);
+                                break;
+
+                            case 4:
+                                System.out.println("Digite o número da conta corrente: ");
+                                int numCtaPoup = scanner.nextInt();
+                                ContaPoupanca.atualizarRendimento(numCtaPoup, cp1, cp2);
+                                break;
+
+                            case 5:
+                                System.out.println(">>> Retornando ao Menu Inicial");
+                                break;
+
+                            default:
+                                System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
+                                break;
+
+                        }
+                    }
                     break;
+
                 case 5:
                     //Código para a funcionalidade Transferência
                     int opcaoTransf = 0;
                     while (opcaoTransf != 2) {
                         System.out.println("================================================================");
                         System.out.println("MENU: TRANSFERÊNCIAS");
-                        System.out.println("1. Efetuar transferência");
+                        System.out.println("1. Realizar transferência");
                         System.out.println("2. Retornar ao Menu Inicial");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 

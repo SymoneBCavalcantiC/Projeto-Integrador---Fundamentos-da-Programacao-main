@@ -21,8 +21,9 @@ public class ContaCorrente extends Conta {
 
     @Override
     public void atualizarSaldo() {
-        if (getSaldo() <= 0) {
-            double juros = (getSaldo() + getLimite()) * 0.1; // taxa de juros de 10% ao mês
+        if (getSaldo() < 0) {
+            //double limiteDisponivel = (getLimite() + getSaldo());
+            double juros = -(getSaldo()) * 0.1; // taxa de juros de 10% ao mês
             saldo -= juros;
         } else {
             double rendimento = getSaldo() * 0.05; // rendimento de 5% ao mês
@@ -37,7 +38,7 @@ public class ContaCorrente extends Conta {
         System.out.println("Hoje é qual DIA do mês? ");
         int diaDoMes = scanner.nextInt();
 
-        if (diaDoMes == 30 || diaDoMes == 31) {
+        if (diaDoMes == 01) {
             cc1.atualizarSaldo();
             cc2.atualizarSaldo();
 
@@ -53,8 +54,10 @@ public class ContaCorrente extends Conta {
         } else {
             if (cc1.getNumeroConta() == numeroConta) {
                 System.out.println(">>> Saldo disponível: R$ " + cc1.getSaldo());
+                System.out.println(">>> Limite da Conta Corrente: R$ " + cc1.getLimite());
             } else if (cc2.getNumeroConta() == numeroConta) {
                 System.out.println(">>> Saldo disponível: R$ " + cc2.getSaldo());
+                System.out.println(">>> Limite da Conta Corrente: R$ " + cc1.getLimite());
             } else System.out.println(">>> Número de conta inválido.");
         }
     }
@@ -64,11 +67,13 @@ public class ContaCorrente extends Conta {
         if (cc1.getNumeroConta() == numeroConta) {
             cc1.depositar(valor);
             System.out.println(">>> Depósito realizado com sucesso!");
+            System.out.println(">>> Saldo atual: R$ " + cc1.getSaldo());
         } else if (cc2.getNumeroConta() == numeroConta) {
             cc2.depositar(valor);
             System.out.println(">>> Depósito realizado com sucesso!");
+            System.out.println(">>> Saldo atual: R$ " + cc2.getSaldo());
         } else {
-            System.out.println(">>> Número de conta inválido.");
+            System.out.println(">>> Conta Corrente não localizada! Digite um número de conta válido!");
         }
     }
 
@@ -76,20 +81,23 @@ public class ContaCorrente extends Conta {
     public boolean sacar(double valor) {
         if (valor <= saldo) {
             saldo -= valor;
-            System.out.println(">>> Saque realizado com sucesso!");
-            System.out.println(">>> Saldo atual: R$ " + getSaldo());
-            System.out.println(">>> Limite atual: R$ " + getLimite());
+            System.out.println(">>> Saque realizado com sucesso! R$ " + valor);
+            System.out.println(">>> Saldo atual: R$ " + saldo);
+            System.out.println(">>> Limite da conta: R$ " + limite);
+            System.out.println(">>> Saldo disponível para saque: R$ " + (saldo + limite));
         } else if (valor <= saldo + limite) {
-            double valorRestante = valor - saldo;
-            saldo = 0 - limite;
-            limite -= valorRestante;
-            System.out.println(">>> Saque realizado com sucesso utilizando o limite da conta.");
-            System.out.println(">>> Saldo disponível: R$ " + getSaldo());
-            System.out.println(">>> Limite atual: R$ " + getLimite());
+            double limiteDisponivel = saldo + limite;
+            saldo = valor - limiteDisponivel;
+            System.out.println(">>> Saque realizado com sucesso! R$ " + valor);
+            //System.out.println(">>> Saldo atual: R$ " + saldo);
+            //System.out.println(">>> Limite da conta: R$ " + limite);
+            System.out.println(">>> Saldo disponível para saque: R$ " + limiteDisponivel);
+
         } else {
             System.out.println(">>> Saldo insuficiente!");
-            System.out.println(">>> O valor máximo que pode ser sacado é: R$ " + (saldo + limite));
-            System.out.println(">>> Saldo atual: R$ " + saldo + " | Limite atual: R$ " + limite);
+            System.out.println(">>> O valor máximo que pode ser sacado é: R$ " + saldo );
+            System.out.println(">>> Saldo atual: R$ " + saldo + " | Limite atual: R$ " + getLimite());
+            System.out.println("Saldo disponível para saque: R$ " + (saldo + limite));
         }
         return false;
     }

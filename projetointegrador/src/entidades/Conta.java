@@ -8,6 +8,10 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
+    public Conta(int numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
     public int getNumeroConta() {
         return numeroConta;
     }
@@ -28,17 +32,13 @@ public abstract class Conta {
             System.out.println(">>> Saldo insuficiente!");
             return false;
         }
-
     }
-
-
 
     public void atualizarSaldo() {
     }
 
-    /*public void realizarSaque(double valor) {
+    public void calcularRendimentos(){
+
     }
 
-    public void realizarDeposito(double valor) {
-    }*/
 }

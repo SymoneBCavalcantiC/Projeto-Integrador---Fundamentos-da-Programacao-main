@@ -3,20 +3,36 @@ import java.util.Scanner;
 
 
 public class Transferencia {
-    protected Conta contaOrigem;
-    protected Conta contaDestino;
-    protected double valor;
+    private Conta contaOrigem;
+    private Conta contaDestino;
+    private double valorTransf;
 
     public Transferencia(Conta contaOrigem, Conta contaDestino, double valor) {
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
-        this.valor = valor;
+        this.valorTransf = valor;
+    }
+
+    public Conta getContaOrigem() {
+        return contaOrigem;
+    }
+
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
+    }
+
+    public Conta getContaDestino() {
+        return contaDestino;
+    }
+
+    public void setContaDestino(Conta contaDestino) {
+        this.contaDestino = contaDestino;
     }
 
     public void realizarTransferencia() {
-        if (contaOrigem.getSaldo() >= valor) {
-            contaOrigem.sacar(valor);
-            contaDestino.depositar(valor);
+        if (contaOrigem.getSaldo() >= valorTransf) {
+            contaOrigem.sacar(valorTransf);
+            contaDestino.depositar(valorTransf);
             System.out.println("Transferência realizada com sucesso!");
         } else {
             System.out.println("Saldo insuficiente para realizar a transferência.");
