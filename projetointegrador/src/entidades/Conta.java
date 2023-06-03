@@ -37,7 +37,7 @@ public abstract class Conta {
     public void atualizarSaldo() {
     }
 
-    public void calcularRendimentos(){
+    public void calcularRendimento(){
 
     }
 

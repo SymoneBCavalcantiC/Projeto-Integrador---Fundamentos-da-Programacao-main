@@ -149,8 +149,8 @@ public class Main {
                                 break;
 
                             case 5: //Efetua atualização da rentabilidade mensal da carteira
-
-                                break; //Fim da opção "Atualizar Rentabilidade mensal", dentro do 'Menu Investimentos'
+                                ci.calcularRendimento();
+                                break;
 
                             case 6:
                                 System.out.println(">>> Retornando ao Menu Inicial");

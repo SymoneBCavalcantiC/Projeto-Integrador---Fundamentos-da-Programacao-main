@@ -110,17 +110,12 @@ public class ContaInvestimento extends Conta {
             }
 
             saldoInvestimento -= valorInvest;
-            System.out.println("Valor aplicado com sucesso.");
+            System.out.println(">>> Valor aplicado com sucesso.");
 
         } else {
-            System.out.println("Saldo insuficiente na conta investimento.");
+            System.out.println(">>> Saldo insuficiente na conta investimento.");
         }
     } //Fim do método para Realizar Aplicações na carteira do cliente
-
-    @Override
-    public void transferir(Conta origem, Conta destino, double valorResgatado) {
-        super.transferir(origem, destino, valorResgatado);
-    }
 
     public static void resgatarContaInvestimento(ContaCorrente contaCorrente) {
 
@@ -174,10 +169,9 @@ public class ContaInvestimento extends Conta {
                 }
 
             saldoInvestimento += valorResgatado;
-            System.out.println("Aplicação resgatada com sucesso.");
+            System.out.println(">>> Aplicação resgatada com sucesso.");
             contaCorrente.depositar(valorResgatado);
-
-
+            System.out.println(">>> Valor creditado em Conta Corrente.");
             }
     } //Fim do método para Realizar Resgates na carteira do cliente
 
@@ -185,13 +179,27 @@ public class ContaInvestimento extends Conta {
 
 
     @Override
-    public void atualizarSaldo() {
-        double rendimentoInvestimento = getSaldoInvestimento() * taxaDeRetorno / 12; // taxa de retorno anual dividido por 12 meses
-        saldoInvestimento += rendimentoInvestimento;
+    public void calcularRendimento() {
+        double rendimentoCDB = saldoCDB * TXRENT_CDB;
+        double impRendaCDB = rendimentoCDB * IR;
+        saldoCDB += rendimentoCDB - impRendaCDB;
+
+        double rendimentoLCI = saldoLCI * TXRENT_LCI;
+        saldoLCI += rendimentoLCI;
+
+        double rendimentoFundoRendaFixa = saldoFundoRendaFixa * TXRENT_RENDA_FIXA;
+        double impRendaFundoRendaFixa = rendimentoFundoRendaFixa * IR;
+        saldoFundoRendaFixa += rendimentoFundoRendaFixa - TXADM - impRendaFundoRendaFixa;
+
+        double rendimentoFundoAcoes = saldoFundoAcoes * TXRENT_FUNDO_ACOES;
+        double taxaFundoAcoes = saldoFundoAcoes * TXCORRETAGEM;
+        double impRendaFundoAcoes = rendimentoFundoAcoes * IR;
+        saldoFundoAcoes += rendimentoFundoAcoes - taxaFundoAcoes - TXADM - impRendaFundoAcoes;
+
+        System.out.println(">>> Rendimento atualizado com sucesso!");
+        System.out.println(">>> Saldo atual CDB: R$ " + saldoCDB);
+        System.out.println(">>> Saldo atual LCI: R$ " + saldoLCI);
+        System.out.println(">>> Saldo atual Fundo de Renda Fixa Tradicional: R$ " + saldoFundoRendaFixa);
+        System.out.println(">>> Saldo atual Fundo de Ações da Bolsa Brasileira: R$ " + saldoFundoAcoes);
     }
-
-
-
-
-
 }
