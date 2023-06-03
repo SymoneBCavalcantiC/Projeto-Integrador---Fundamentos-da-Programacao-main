@@ -121,6 +121,62 @@ public class ContaInvestimento extends Conta {
 
     //inserir os demais métodos a partir daqui...
 
+    public static void resgatarContaInvestimento() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("* Saldo dos investimentos disponíveis para resgate: ");
+        System.out.println("- Saldo aplicado em LCI: R$ " + saldoLCI);
+        System.out.println("- Saldo aplicado em CBD: R$ " + saldoCDB);
+        System.out.println("- Saldo aplicado em Fundo de Renda Fixa Tradicional: R$ " + saldoFundoRendaFixa);
+        System.out.println("- Saldo aplicado em Fundo de Ações da Bolsa Brasileira: R$ " + saldoFundoAcoes);
+        System.out.println("---------------------------------------------------------------------------------");
+
+        int opcaoResgInv = 0;
+        while (opcaoResgInv != 5) {
+            System.out.println("================================================================");
+            System.out.println("Submenu Investimentos: RESGATAR");
+            System.out.println("1. Resgatar LCI");
+            System.out.println("2. Resgatar CDB");
+            System.out.println("3. Resgatar Fundo de Renda Fixa Tradicional");
+            System.out.println("4. Resgatar Fundo de Ações da Bolsa Brasileira");
+            System.out.println("5. Retornar ao 'Menu Investimentos'");
+            System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
+
+            opcaoResgInv = scanner.nextInt();
+
+            double valorResgatado = 0.0;
+
+            switch (opcaoResgInv) {
+                case 1:
+                    valorResgatado = saldoLCI;
+                    saldoLCI = 0.0;
+                    break;
+                case 2:
+                    valorResgatado = saldoCDB;
+                    saldoCDB = 0.0;
+                    break;
+                case 3:
+                    valorResgatado = saldoFundoRendaFixa;
+                    saldoFundoRendaFixa = 0.0;
+                    break;
+                case 4:
+                    valorResgatado = saldoFundoAcoes;
+                    saldoFundoAcoes = 0.0;
+                    break;
+                case 5:
+                    System.out.println(">>> Retornando ao MENU INVESTIMENTOS");
+                    break;
+
+                default:
+                    System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
+                    break;
+                }
+
+            saldoInvestimento += valorResgatado;
+            System.out.println("Valor resgatado com sucesso.");
+            }
+    } //Fim do método para Realizar Resgates na carteira do cliente
+
 
     @Override
     public void atualizarSaldo() {
