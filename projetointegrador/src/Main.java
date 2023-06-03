@@ -145,7 +145,7 @@ public class Main {
                                 break;
 
                             case 4: //Apresenta menu com as opções de investimento para cliente decidir de qual resgatar
-                                ContaInvestimento.resgatarContaInvestimento();
+                                ContaInvestimento.resgatarContaInvestimento(cc1);
                                 break;
 
                             case 5: //Efetua atualização da rentabilidade mensal da carteira

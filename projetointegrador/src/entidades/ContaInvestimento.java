@@ -117,11 +117,12 @@ public class ContaInvestimento extends Conta {
         }
     } //Fim do método para Realizar Aplicações na carteira do cliente
 
+    @Override
+    public void transferir(Conta origem, Conta destino, double valorResgatado) {
+        super.transferir(origem, destino, valorResgatado);
+    }
 
-
-    //inserir os demais métodos a partir daqui...
-
-    public static void resgatarContaInvestimento() {
+    public static void resgatarContaInvestimento(ContaCorrente contaCorrente) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("* Saldo dos investimentos disponíveis para resgate: ");
@@ -173,9 +174,14 @@ public class ContaInvestimento extends Conta {
                 }
 
             saldoInvestimento += valorResgatado;
-            System.out.println("Valor resgatado com sucesso.");
+            System.out.println("Aplicação resgatada com sucesso.");
+            contaCorrente.depositar(valorResgatado);
+
+
             }
     } //Fim do método para Realizar Resgates na carteira do cliente
+
+    //inserir os demais métodos a partir daqui...
 
 
     @Override
@@ -185,10 +191,7 @@ public class ContaInvestimento extends Conta {
     }
 
 
-    @Override
-    public void transferir(Conta origem, Conta destino, double valorTransf) {
 
-    }
 
 
 }
