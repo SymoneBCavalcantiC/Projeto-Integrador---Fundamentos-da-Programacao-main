@@ -175,8 +175,6 @@ public class ContaInvestimento extends Conta {
             }
     } //Fim do método para Realizar Resgates na carteira do cliente
 
-    //inserir os demais métodos a partir daqui...
-
 
     @Override
     public void calcularRendimento() {
