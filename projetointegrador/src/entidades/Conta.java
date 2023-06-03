@@ -41,4 +41,8 @@ public abstract class Conta {
 
     }
 
+    public void transferir(Conta origem, Conta destino, double valorTransf){
+
+    }
+
 }

@@ -9,7 +9,7 @@ public class Main {
         ContaCorrente cc2 = new ContaCorrente(321, 2000, 500, 20);
         ContaPoupanca cp1 = new ContaPoupanca(456);
         ContaPoupanca cp2 = new ContaPoupanca(654);
-        ContaInvestimento ci = new ContaInvestimento(789, 0.08);
+        ContaInvestimento ci = new ContaInvestimento(789);
         CartaoCredito cartao = new CartaoCredito(10000);
 
         Scanner scanner = new Scanner(System.in);
@@ -84,10 +84,10 @@ public class Main {
                     while (opcaoCartao != 5) {
                         System.out.println("================================================================");
                         System.out.println("MENU: CARTÃO DE CRÉDITO");
-                        System.out.println("1. Efetuar uma compra");
-                        System.out.println("2. Listar histórico de compras");
-                        System.out.println("3. Emitir a fatura mensal");
-                        System.out.println("4. Pagar a fatura mensal");
+                        System.out.println("1. Efetuar COMPRA");
+                        System.out.println("2. Listar HISTÓRICO DE COMPRAS");
+                        System.out.println("3. Emitir FATURA MENSAL");
+                        System.out.println("4. PAGAR FATURA mensal");
                         System.out.println("5. Retornar ao Menu Inicial");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
                         opcaoCartao = scanner.nextInt();
@@ -114,22 +114,66 @@ public class Main {
                         }
                     }
                     break;
+
                 case 3:
-                    // Código para a funcionalidade Investimento
-                    System.out.println("MENU: INVESTIMENTOS");
-                    System.out.println("Em desenvolvimento");
-                    System.out.println("Retornando ao Menu Inicial.");
-                    break;
+                    // Código para a funcionalidade Investimentos
+                    int opcaoInvest = 0;
+                    while (opcaoInvest != 6) {
+                        System.out.println("================================================================");
+                        System.out.println("MENU: INVESTIMENTOS");
+                        System.out.println("1. Listar OPÇÕES DE INVESTIMENTO do portfólio");
+                        System.out.println("2. Verificar SALDO DISPONÍVEL da carteira");
+                        System.out.println("3. Efetuar APLICAÇÃO");
+                        System.out.println("4. Efetuar RESGATE");
+                        System.out.println("5. Atualizar RENTABILIDADE MENSAL da carteira");
+                        System.out.println("6. Retornar ao Menu Inicial");
+                        System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
+                        System.out.println("----------------------------------------------------------------");
+                        opcaoInvest = scanner.nextInt();
+
+                        switch (opcaoInvest) {
+                            case 1://Lista as opções de investimento disponíveis no portfólio
+                                ContaInvestimento.listarOpcoesInvestimento();
+                                break;
+
+                            case 2://Verifica o saldo disponível na conta investimento e na carteira da conta
+                                ContaInvestimento.verificarSaldoInv();
+                                break;
+
+                            case 3://Apresenta menu com as opções de investimento para cliente decidir em qual aplicar
+                                ContaInvestimento.aplicarContaInvestimento();
+                                break;
+
+                            case 4: //Apresenta menu com as opções de investimento para cliente decidir de qual resgatar
+
+                                break; //Fim da opção "Resgatar", dentro do 'Menu Investimentos'
+
+                            case 5: //Efetua atualização da rentabilidade mensal da carteira
+
+                                break; //Fim da opção "Atualizar Rentabilidade mensal", dentro do 'Menu Investimentos'
+
+                            case 6:
+                                System.out.println(">>> Retornando ao Menu Inicial");
+                                break;
+
+                            default:
+                                System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
+                                break;
+                        }
+                    }
+                    break; //Fim do 'Menu Investimentos'
+
+
                 case 4:
                     //Código para a classe Poupança
                     int opcaoPoup = 0;
                     while (opcaoPoup != 5) {
                         System.out.println("================================================================");
                         System.out.println("MENU: POUPANÇA");
-                        System.out.println("1. Aplicar em Poupança");
-                        System.out.println("2. Resgatar da poupança");
-                        System.out.println("3. Consultar saldo");
-                        System.out.println("4. Atualizar rendimentos: juros e correção monetária");
+                        System.out.println("1. APLICAR em Poupança");
+                        System.out.println("2. RESGATAR da poupança");
+                        System.out.println("3. Consultar SALDO DISPONÍVEL");
+                        System.out.println("4. Atualizar RENDIMENTO MENSAL: juros e correção monetária");
                         System.out.println("5. Retornar ao Menu Inicial");
 
                         opcaoPoup = scanner.nextInt();
@@ -178,11 +222,12 @@ public class Main {
                 case 5:
                     //Código para a funcionalidade Transferência
                     int opcaoTransf = 0;
-                    while (opcaoTransf != 2) {
+                    while (opcaoTransf != 3) {
                         System.out.println("================================================================");
                         System.out.println("MENU: TRANSFERÊNCIAS");
-                        System.out.println("1. Realizar transferência");
-                        System.out.println("2. Retornar ao Menu Inicial");
+                        System.out.println("1. Realizar TRANSFERÊNCIA ENTRE CONTAS");
+                        System.out.println("2. Realizar TRANSFERÊNCIA para CONTA INVESTIMENTO");
+                        System.out.println("3. Retornar ao Menu Inicial");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
                         opcaoTransf = scanner.nextInt();
@@ -193,6 +238,10 @@ public class Main {
                                 break;
 
                             case 2:
+                                System.out.println(">>> Transferência para Conta Investimento");
+                                break;
+
+                            case 3:
                                 System.out.println(">>> Retornando ao Menu Inicial");
                                 break;
 
@@ -200,7 +249,6 @@ public class Main {
                                 System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
                                 break;
                         }
-                        //break;
                     }
                     break;
 
@@ -214,6 +262,7 @@ public class Main {
                 default:
                     System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
                     break;
+
             }
            }
 
