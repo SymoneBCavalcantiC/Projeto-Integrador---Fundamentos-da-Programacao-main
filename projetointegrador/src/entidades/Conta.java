@@ -44,9 +44,4 @@ public abstract class Conta {
     public void calcularRendimento(){
 
     }
-
-    /*public void transferir(Conta contaOrigem, Conta contaDestino, double valor){
-
-    }*/
-
 }

@@ -57,17 +57,20 @@ public class ContaInvestimento extends Conta {
     }
 
     public static void verificarSaldoInv() {
-        System.out.println("Saldo disponível na conta investimento: " + saldoInvestimento);
-        System.out.println("Saldo da aplicação LCI: " + saldoLCI);
-        System.out.println("Saldo da aplicação CDB: " + saldoCDB);
-        System.out.println("Saldo da aplicação Fundo de Renda Fixa Tradicional: " + saldoFundoRendaFixa);
-        System.out.println("Saldo da aplicação Fundo de Ações da Bolsa de Valores Brasileira: " + saldoFundoAcoes);
+        System.out.println("- Saldo disponível na conta investimento: R$ " + saldoInvestimento);
+        System.out.println("- Saldo da aplicação LCI: R$ " + saldoLCI);
+        System.out.println("- Saldo da aplicação CDB: R$ " + saldoCDB);
+        System.out.println("- Saldo da aplicação Fundo de Renda Fixa Tradicional: R$ " + saldoFundoRendaFixa);
+        System.out.println("- Saldo da aplicação Fundo de Ações da Bolsa de Valores Brasileira: R$ " + saldoFundoAcoes);
     }
 
+    public void depositar(double valor) {
+        saldoInvestimento += valor;
+    }
     public static void aplicarContaInvestimento() {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Saldo disponível para investir: " + saldoInvestimento);
+        System.out.println("* Saldo disponível para investir: R$ " + saldoInvestimento);
         System.out.print("Digite o valor que deseja aplicar: ");
         double valorInvest = scanner.nextDouble();
         scanner.nextLine();
@@ -89,16 +92,40 @@ public class ContaInvestimento extends Conta {
 
                 switch (opcaoAplicInv) {
                     case 1:
-                        saldoLCI += valorInvest;
+                        if (valorInvest <= saldoInvestimento){
+                            saldoLCI += valorInvest;
+                            saldoInvestimento -= valorInvest;
+                            System.out.println(">>> Valor aplicado com sucesso.");
+                        } else {
+                            System.out.println(">>> Saldo insuficiente na conta investimento.");
+                        }
                         break;
                     case 2:
-                        saldoCDB += valorInvest;
+                        if (valorInvest <= saldoInvestimento){
+                            saldoCDB += valorInvest;
+                            saldoInvestimento -= valorInvest;
+                            System.out.println(">>> Valor aplicado com sucesso.");
+                        } else {
+                            System.out.println(">>> Saldo insuficiente na conta investimento.");
+                        }
                         break;
                     case 3:
-                        saldoFundoRendaFixa += valorInvest;
+                        if (valorInvest <= saldoInvestimento){
+                            saldoFundoRendaFixa += valorInvest;
+                            saldoInvestimento -= valorInvest;
+                            System.out.println(">>> Valor aplicado com sucesso.");
+                        } else {
+                            System.out.println(">>> Saldo insuficiente na conta investimento.");
+                        }
                         break;
                     case 4:
-                        saldoFundoAcoes += valorInvest;
+                        if (valorInvest <= saldoInvestimento){
+                            saldoFundoAcoes += valorInvest;
+                            saldoInvestimento -= valorInvest;
+                            System.out.println(">>> Valor aplicado com sucesso.");
+                        } else {
+                            System.out.println(">>> Saldo insuficiente na conta investimento.");
+                        }
                         break;
                     case 5:
                         System.out.println(">>> Retornando ao MENU INVESTIMENTOS");
@@ -108,10 +135,6 @@ public class ContaInvestimento extends Conta {
                         break;
                 }
             }
-
-            saldoInvestimento -= valorInvest;
-            System.out.println(">>> Valor aplicado com sucesso.");
-
         } else {
             System.out.println(">>> Saldo insuficiente na conta investimento.");
         }
@@ -178,21 +201,29 @@ public class ContaInvestimento extends Conta {
 
     @Override
     public void calcularRendimento() {
-        double rendimentoCDB = saldoCDB * TXRENT_CDB;
-        double impRendaCDB = rendimentoCDB * IR;
-        saldoCDB += rendimentoCDB - impRendaCDB;
+        if (saldoCDB > 0) {
+            double rendimentoCDB = saldoCDB * TXRENT_CDB;
+            double impRendaCDB = rendimentoCDB * IR;
+            saldoCDB += rendimentoCDB - impRendaCDB;
+        }
 
-        double rendimentoLCI = saldoLCI * TXRENT_LCI;
-        saldoLCI += rendimentoLCI;
+        if (saldoLCI > 0) {
+            double rendimentoLCI = saldoLCI * TXRENT_LCI;
+            saldoLCI += rendimentoLCI;
+        }
 
-        double rendimentoFundoRendaFixa = saldoFundoRendaFixa * TXRENT_RENDA_FIXA;
-        double impRendaFundoRendaFixa = rendimentoFundoRendaFixa * IR;
-        saldoFundoRendaFixa += rendimentoFundoRendaFixa - TXADM - impRendaFundoRendaFixa;
+        if (saldoFundoRendaFixa > 0) {
+            double rendimentoFundoRendaFixa = saldoFundoRendaFixa * TXRENT_RENDA_FIXA;
+            double impRendaFundoRendaFixa = rendimentoFundoRendaFixa * IR;
+            saldoFundoRendaFixa += rendimentoFundoRendaFixa - TXADM - impRendaFundoRendaFixa;
+        }
 
-        double rendimentoFundoAcoes = saldoFundoAcoes * TXRENT_FUNDO_ACOES;
-        double taxaFundoAcoes = saldoFundoAcoes * TXCORRETAGEM;
-        double impRendaFundoAcoes = rendimentoFundoAcoes * IR;
-        saldoFundoAcoes += rendimentoFundoAcoes - taxaFundoAcoes - TXADM - impRendaFundoAcoes;
+        if (saldoFundoAcoes > 0) {
+            double rendimentoFundoAcoes = saldoFundoAcoes * TXRENT_FUNDO_ACOES;
+            double taxaFundoAcoes = saldoFundoAcoes * TXCORRETAGEM;
+            double impRendaFundoAcoes = rendimentoFundoAcoes * IR;
+            saldoFundoAcoes += rendimentoFundoAcoes - taxaFundoAcoes - TXADM - impRendaFundoAcoes;
+        }
 
         System.out.println(">>> Rendimento atualizado com sucesso!");
         System.out.println(">>> Saldo atual CDB: R$ " + saldoCDB);

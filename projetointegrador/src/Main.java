@@ -1,5 +1,4 @@
 import entidades.*;
-
 import java.util.Scanner;
 
 public class Main {
@@ -22,12 +21,12 @@ public class Main {
         int opcao = 0;
         while (opcao != 5) {
             System.out.println("===============================================================");
-            System.out.println("MENU INICIAL");
-            System.out.println("1. Conta Corrente");
-            System.out.println("2. Cartão de crédito");
-            System.out.println("3. Investimentos");
-            System.out.println("4. Poupança");
-            System.out.println("5. Sair");
+            System.out.println("MENU INICIAL---------------------------------------------------");
+            System.out.println("1. CONTA CORRENTE");
+            System.out.println("2. CARTÃO DE CRÉDITO");
+            System.out.println("3. INVESTIMENTOS");
+            System.out.println("4. POUPANÇA");
+            System.out.println("5. FECHAR APP");
             System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
             opcao = scanner.nextInt();
@@ -38,7 +37,7 @@ public class Main {
                     int opcaoConta = 0;
                     while (opcaoConta != 5) {
                         System.out.println("================================================================");
-                        System.out.println("MENU: CONTA CORRENTE");
+                        System.out.println("MENU: CONTA CORRENTE--------------------------------------------");
                         System.out.println("1. Depositar");
                         System.out.println("2. Sacar");
                         System.out.println("3. Transferir");
@@ -69,11 +68,11 @@ public class Main {
                                 int opcaoTransf = 0;
                                 while (opcaoTransf != 4) {
                                     System.out.println("================================================================");
-                                    System.out.println("Submenu TRANSFERÊNCIAS");
+                                    System.out.println("Submenu TRANSFERÊNCIAS------------------------------------------");
                                     System.out.println("1. Transferir para uma Conta Corrente");
                                     System.out.println("2. Transferir para uma Conta Poupança");
                                     System.out.println("3. Transferir para a Conta Investimento");
-                                    System.out.println("4. Retornar ao 'Menu Investimentos'");
+                                    System.out.println("4. Retornar ao 'Menu Conta Corrente'");
                                     System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
                                     opcaoTransf = scanner.nextInt();
@@ -127,7 +126,7 @@ public class Main {
                                             System.out.println("Digite a conta corrente de origem: ");
                                             int numCcOrigem = scanner.nextInt();
 
-                                            System.out.println("Digite a conta poupança de destino: ");
+                                            System.out.println("Digite a conta investimento: ");
                                             int numCiDestino = scanner.nextInt();
 
                                             if (numCcOrigem == cc1.getNumeroConta() && numCiDestino == ci.getNumeroConta()) {
@@ -137,7 +136,7 @@ public class Main {
                                             }
                                             break;
                                         case 4:
-                                            System.out.println(">>> Retornando ao Menu Transferências");
+                                            System.out.println(">>> Retornando ao Menu Conta Corrente");
                                             break;
                                         default:
                                             System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
@@ -165,7 +164,7 @@ public class Main {
                     int opcaoCartao = 0;
                     while (opcaoCartao != 5) {
                         System.out.println("================================================================");
-                        System.out.println("MENU: CARTÃO DE CRÉDITO");
+                        System.out.println("MENU: CARTÃO DE CRÉDITO-----------------------------------------");
                         System.out.println("1. Efetuar COMPRA");
                         System.out.println("2. Listar HISTÓRICO DE COMPRAS");
                         System.out.println("3. Emitir FATURA MENSAL");
@@ -202,7 +201,7 @@ public class Main {
                     int opcaoInvest = 0;
                     while (opcaoInvest != 6) {
                         System.out.println("================================================================");
-                        System.out.println("MENU: INVESTIMENTOS");
+                        System.out.println("MENU: INVESTIMENTOS---------------------------------------------");
                         System.out.println("1. Listar OPÇÕES DE INVESTIMENTO do portfólio");
                         System.out.println("2. Verificar SALDO DISPONÍVEL da carteira");
                         System.out.println("3. Efetuar APLICAÇÃO");
@@ -251,7 +250,7 @@ public class Main {
                     int opcaoPoup = 0;
                     while (opcaoPoup != 5) {
                         System.out.println("================================================================");
-                        System.out.println("MENU: POUPANÇA");
+                        System.out.println("MENU: POUPANÇA--------------------------------------------------");
                         System.out.println("1. APLICAR em Poupança");
                         System.out.println("2. RESGATAR da poupança");
                         System.out.println("3. Consultar SALDO DISPONÍVEL");
@@ -296,47 +295,14 @@ public class Main {
                             default:
                                 System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
                                 break;
-
                         }
                     }
                     break;
 
-                /*case 5:
-                    //Código para a funcionalidade Transferência
-                    int opcaoTransf = 0;
-                    while (opcaoTransf != 3) {
-                        System.out.println("================================================================");
-                        System.out.println("MENU: TRANSFERÊNCIAS");
-                        System.out.println("1. Realizar TRANSFERÊNCIA ENTRE CONTAS");
-                        System.out.println("2. Realizar TRANSFERÊNCIA para CONTA INVESTIMENTO");
-                        System.out.println("3. Retornar ao Menu Inicial");
-                        System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
-
-                        opcaoTransf = scanner.nextInt();
-
-                        switch (opcaoTransf) {
-                            case 1:
-                                Transferencia.transferir(scanner, cc1, cc2, cp1, cp2);
-                                break;
-
-                            case 2:
-                                System.out.println(">>> Transferência para Conta Investimento");
-                                break;
-
-                            case 3:
-                                System.out.println(">>> Retornando ao Menu Inicial");
-                                break;
-
-                            default:
-                                System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
-                                break;
-                        }
-                    }
-                    break;*/
-
                 case 5:
                     //Código para encerrar o programa
                     System.out.println("================================================================");
+                    System.out.println("ENCERRANDO A SESSÃO DE ATENDIMENTO------------------------------");
                     System.out.println("O EFS3Bank agradece a sua visita, " + nomeCliente + "!");
                     System.out.println("Até breve! ;)");
                     break;
