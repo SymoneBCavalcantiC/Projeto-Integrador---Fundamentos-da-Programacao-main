@@ -20,6 +20,10 @@ public abstract class Conta {
         return saldo;
     }
 
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
     public void depositar(double valor) {
         saldo += valor;
     }
@@ -41,8 +45,8 @@ public abstract class Conta {
 
     }
 
-    public void transferir(Conta origem, Conta destino, double valorTransf){
+    /*public void transferir(Conta contaOrigem, Conta contaDestino, double valor){
 
-    }
+    }*/
 
 }

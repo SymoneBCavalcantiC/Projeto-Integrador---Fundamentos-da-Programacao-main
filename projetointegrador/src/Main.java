@@ -20,15 +20,14 @@ public class Main {
         System.out.println("Sua conta está pronta e é uma alegria para nós atendê-lo(a).");
 
         int opcao = 0;
-        while (opcao != 6) {
+        while (opcao != 5) {
             System.out.println("===============================================================");
             System.out.println("MENU INICIAL");
             System.out.println("1. Conta Corrente");
             System.out.println("2. Cartão de crédito");
             System.out.println("3. Investimentos");
             System.out.println("4. Poupança");
-            System.out.println("5. Transferências");
-            System.out.println("6. Sair");
+            System.out.println("5. Sair");
             System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
             opcao = scanner.nextInt();
@@ -37,13 +36,14 @@ public class Main {
                 case 1:
                     //Código para a funcionalidade Conta Corrente
                     int opcaoConta = 0;
-                    while (opcaoConta != 4) {
+                    while (opcaoConta != 5) {
                         System.out.println("================================================================");
                         System.out.println("MENU: CONTA CORRENTE");
                         System.out.println("1. Depositar");
                         System.out.println("2. Sacar");
-                        System.out.println("3. Consultar saldo");
-                        System.out.println("4. Retornar ao Menu Inicial");
+                        System.out.println("3. Transferir");
+                        System.out.println("4. Consultar saldo");
+                        System.out.println("5. Retornar ao Menu Inicial");
                         System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
 
                         opcaoConta = scanner.nextInt();
@@ -56,6 +56,7 @@ public class Main {
                                 int numContaDeposito = scanner.nextInt();
                                 ContaCorrente.depositarContaCorrente(numContaDeposito, valorDeposito, cc1, cc2);
                                 break;
+
                             case 2:
                                 System.out.println("Digite o valor a ser sacado: R$ ");
                                 double valorSaque = scanner.nextDouble();
@@ -63,12 +64,93 @@ public class Main {
                                 int numContaSaque = scanner.nextInt();
                                 ContaCorrente.sacarContaCorrente(numContaSaque, valorSaque, cc1, cc2);
                                 break;
-                            case 3:
+
+                            case 3: //para o caso de o cliente desejar realizar transferências
+                                int opcaoTransf = 0;
+                                while (opcaoTransf != 4) {
+                                    System.out.println("================================================================");
+                                    System.out.println("Submenu TRANSFERÊNCIAS");
+                                    System.out.println("1. Transferir para uma Conta Corrente");
+                                    System.out.println("2. Transferir para uma Conta Poupança");
+                                    System.out.println("3. Transferir para a Conta Investimento");
+                                    System.out.println("4. Retornar ao 'Menu Investimentos'");
+                                    System.out.println("Selecione a opção desejada, digitando o número correspondente: ");
+
+                                    opcaoTransf = scanner.nextInt();
+
+                                    switch (opcaoTransf) {
+                                        case 1: //transferir para uma Conta Corrente
+                                            System.out.println("Digite o valor a ser transferido: R$ ");
+                                            double valorTransfCC = scanner.nextDouble();
+
+                                            System.out.println("Digite a conta corrente de origem: ");
+                                            int numCCorigem = scanner.nextInt();
+
+                                            System.out.println("Digite a conta corrente de destino: ");
+                                            int numCCdestino = scanner.nextInt();
+
+                                            if (numCCorigem == cc1.getNumeroConta() && numCCdestino == cc2.getNumeroConta()) {
+                                                ContaCorrente.transferir(cc1, cc2, valorTransfCC);
+                                            } else if (numCCorigem == cc2.getNumeroConta() && numCCdestino == cc1.getNumeroConta()) {
+                                                ContaCorrente.transferir(cc2, cc1, valorTransfCC);
+                                            } else {
+                                                System.out.println(">>> Conta não localizada! Digite um número de conta válido!");
+                                            }
+                                            break;
+                                        case 2: //transferir para uma poupança
+                                            System.out.println("Digite o valor a ser transferido: R$ ");
+                                            double valorTransfCP = scanner.nextDouble();
+
+                                            System.out.println("Digite a conta corrente de origem: ");
+                                            int numCorigem = scanner.nextInt();
+
+                                            System.out.println("Digite a conta poupança de destino: ");
+                                            int numCPdestino = scanner.nextInt();
+
+                                            if (numCorigem == cc1.getNumeroConta() && numCPdestino == cp1.getNumeroConta()) {
+                                                ContaCorrente.transferir(cc1, cp1, valorTransfCP);
+                                            } else if (numCorigem == cc1.getNumeroConta() && numCPdestino == cp2.getNumeroConta()) {
+                                                ContaCorrente.transferir(cc2, cp2, valorTransfCP);
+                                            } else if (numCorigem == cc2.getNumeroConta() && numCPdestino == cp1.getNumeroConta()) {
+                                                ContaCorrente.transferir(cc2, cp1, valorTransfCP);
+                                            } else if (numCorigem == cc2.getNumeroConta() && numCPdestino == cp2.getNumeroConta()) {
+                                                ContaCorrente.transferir(cc2, cp2, valorTransfCP);
+                                            } else {
+                                                System.out.println(">>> Conta não localizada! Digite um número de conta válido!");
+                                            }
+                                            break;
+
+                                        case 3: //transferir para a Conta Investimento
+                                            System.out.println("Digite o valor a ser transferido: R$ ");
+                                            double valorTransfCi = scanner.nextDouble();
+
+                                            System.out.println("Digite a conta corrente de origem: ");
+                                            int numCcOrigem = scanner.nextInt();
+
+                                            System.out.println("Digite a conta poupança de destino: ");
+                                            int numCiDestino = scanner.nextInt();
+
+                                            if (numCcOrigem == cc1.getNumeroConta() && numCiDestino == ci.getNumeroConta()) {
+                                                ContaCorrente.transferir(cc1, ci, valorTransfCi);
+                                            } else {
+                                                System.out.println(">>> Conta não localizada! Digite um número de conta válido!");
+                                            }
+                                            break;
+                                        case 4:
+                                            System.out.println(">>> Retornando ao Menu Transferências");
+                                            break;
+                                        default:
+                                            System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
+                                            break;
+                                    }
+                                }
+                                break;
+                            case 4:
                                 System.out.println("Digite o número da conta corrente: ");
                                 int numContaSaldo = scanner.nextInt();
                                 ContaCorrente.consultarSaldoContaCorrente(numContaSaldo, cc1, cc2);
                                 break;
-                            case 4:
+                            case 5:
                                 System.out.println(">>> Retornando ao Menu Inicial");
                                 break;
                             default:
@@ -219,7 +301,7 @@ public class Main {
                     }
                     break;
 
-                case 5:
+                /*case 5:
                     //Código para a funcionalidade Transferência
                     int opcaoTransf = 0;
                     while (opcaoTransf != 3) {
@@ -250,9 +332,9 @@ public class Main {
                                 break;
                         }
                     }
-                    break;
+                    break;*/
 
-                case 6:
+                case 5:
                     //Código para encerrar o programa
                     System.out.println("================================================================");
                     System.out.println("O EFS3Bank agradece a sua visita, " + nomeCliente + "!");
