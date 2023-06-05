@@ -68,7 +68,7 @@ public class Main {
                                 int opcaoTransf = 0;
                                 while (opcaoTransf != 4) {
                                     System.out.println("================================================================");
-                                    System.out.println("Submenu TRANSFERÊNCIAS------------------------------------------");
+                                    System.out.println("Submenu Conta Corrente: TRANSFERIR------------------------------");
                                     System.out.println("1. Transferir para uma Conta Corrente");
                                     System.out.println("2. Transferir para uma Conta Poupança");
                                     System.out.println("3. Transferir para a Conta Investimento");

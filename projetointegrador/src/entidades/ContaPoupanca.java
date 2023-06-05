@@ -93,7 +93,7 @@ public class ContaPoupanca extends Conta {
         System.out.println("Hoje é que DIA do mês? ");
         int diaMes = scanner.nextInt();
 
-        if (diaMes == 01) {
+        if (diaMes == 1) {
 
             if (cp1.getNumeroConta() == numeroConta) {
                 cp1.atualizarSaldo();
