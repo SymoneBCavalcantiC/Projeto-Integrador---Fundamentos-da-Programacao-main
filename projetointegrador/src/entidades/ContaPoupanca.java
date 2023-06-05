@@ -9,7 +9,7 @@ public class ContaPoupanca extends Conta {
 
     public ContaPoupanca(int numeroConta) {
         super(numeroConta);
-        this.taxaDeRendimento = 0.005;
+        this.taxaDeRendimento = 0.02;
         this.taxaReferencial = 0.001;
         this.saldoPoupanca = 0;
     }
