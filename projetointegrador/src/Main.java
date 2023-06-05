@@ -11,6 +11,7 @@ public class Main {
         ContaInvestimento ci = new ContaInvestimento(789);
         CartaoCredito cartao = new CartaoCredito(10000);
 
+        //boas vindas ao cliente
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bem-vindo ao EFS3Bank!");
         System.out.println("Qual é o seu nome?");
@@ -18,6 +19,7 @@ public class Main {
         System.out.println("Olá, " + nomeCliente + "!");
         System.out.println("Sua conta está pronta e é uma alegria para nós atendê-lo(a).");
 
+        //apresenta o menu inicial
         int opcao = 0;
         while (opcao != 5) {
             System.out.println("===============================================================");
@@ -48,7 +50,7 @@ public class Main {
                         opcaoConta = scanner.nextInt();
 
                         switch (opcaoConta) {
-                            case 1:
+                            case 1: //realiza depósito
                                 System.out.println("Digite o valor a ser depositado: R$ ");
                                 double valorDeposito = scanner.nextDouble();
                                 System.out.println("Digite o número da conta corrente: ");
@@ -56,7 +58,7 @@ public class Main {
                                 ContaCorrente.depositarContaCorrente(numContaDeposito, valorDeposito, cc1, cc2);
                                 break;
 
-                            case 2:
+                            case 2: //realiza saque
                                 System.out.println("Digite o valor a ser sacado: R$ ");
                                 double valorSaque = scanner.nextDouble();
                                 System.out.println("Digite o número da conta corrente: ");
@@ -144,12 +146,12 @@ public class Main {
                                     }
                                 }
                                 break;
-                            case 4:
+                            case 4: //verifica saldo
                                 System.out.println("Digite o número da conta corrente: ");
                                 int numContaSaldo = scanner.nextInt();
                                 ContaCorrente.consultarSaldoContaCorrente(numContaSaldo, cc1, cc2);
                                 break;
-                            case 5:
+                            case 5: //retorna ao menu anterior
                                 System.out.println(">>> Retornando ao Menu Inicial");
                                 break;
                             default:
@@ -174,16 +176,16 @@ public class Main {
                         opcaoCartao = scanner.nextInt();
 
                         switch (opcaoCartao) {
-                            case 1:
+                            case 1: //efetua compra
                                 cartao.efetuarCompra();
                                 break;
-                            case 2:
+                            case 2: //lista as compras realizadas
                                 cartao.listarCompras();
                                 break;
-                            case 3:
+                            case 3: //gera fatura
                                 cartao.emitirFatura();
                                 break;
-                            case 4:
+                            case 4: //paga a fatura com recursos de uma conta corrente
                                 cartao.debitarFatura(cc1, cc2);
                                 break;
                             case 5:
@@ -260,7 +262,7 @@ public class Main {
                         opcaoPoup = scanner.nextInt();
 
                         switch (opcaoPoup) {
-                            case 1:
+                            case 1: //realiza depósito
                                 System.out.println("Digite o valor da aplicação: R$ ");
                                 double valorAplicacaoPoup = scanner.nextDouble();
                                 System.out.println("Digite o número da Conta Poupança: ");
@@ -268,7 +270,7 @@ public class Main {
                                 ContaPoupanca.aplicarContaPoupanca(numContaPoupanca, valorAplicacaoPoup, cp1, cp2);
                                 break;
 
-                            case 2:
+                            case 2: //realiza saque
                                 System.out.println("Digite o valor do resgate: R$ ");
                                 double valorResgatePoup = scanner.nextDouble();
                                 System.out.println("Digite o número da Conta Poupança: ");
@@ -276,13 +278,13 @@ public class Main {
                                 ContaPoupanca.resgatarContaPoupanca(numCtPoupanca, valorResgatePoup, cp1, cp2);
                                 break;
 
-                            case 3:
+                            case 3: //verifica saldo
                                 System.out.println("Digite o número da Conta Poupança desejada: ");
                                 int numPoupanca = scanner.nextInt();
                                 ContaPoupanca.consultarSaldoPoupanca(numPoupanca, cp1, cp2);
                                 break;
 
-                            case 4:
+                            case 4: //gera rendimento mensal: juros e correção monetária
                                 System.out.println("Digite o número da conta corrente: ");
                                 int numCtaPoup = scanner.nextInt();
                                 ContaPoupanca.atualizarRendimento(numCtaPoup, cp1, cp2);
@@ -307,7 +309,7 @@ public class Main {
                     System.out.println("Até breve! ;)");
                     break;
 
-                default:
+                default: //apresenta mensagem de erro caso o cliente digite um número inexistente.
                     System.out.println(">>> ATENÇÃO! Opção inválida. Tente novamente");
                     break;
 

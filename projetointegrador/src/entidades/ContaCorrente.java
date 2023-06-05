@@ -5,12 +5,14 @@ public class ContaCorrente extends Conta {
     private final double limite;
     private final double taxaDeManutencao;
 
+    //método construtor da classe
     public ContaCorrente(int numeroConta, double saldo, double limite, double taxaDeManutencao) {
         super(numeroConta, saldo);
         this.limite = limite;
         this.taxaDeManutencao = taxaDeManutencao;
     }
 
+    //método getter (setter não gerado por não ter uso no código)
     public double getLimite() {
         return limite;
     }
@@ -19,10 +21,13 @@ public class ContaCorrente extends Conta {
         return taxaDeManutencao;
     }
 
+
+    // Método que atualiza os saldos. Utilizado nas funcionalidades conta corrente e poupança.
+    //polimorfismo sobreposição
+    //método herdado da classe abstrata Conta
     @Override
     public void atualizarSaldo() {
         if (getSaldo() < 0) {
-            //double limiteDisponivel = (getLimite() + getSaldo());
             double juros = -(getSaldo()) * 0.1; // taxa de juros de 10% ao mês
             saldo -= juros;
             System.out.println(">>> Houve juros de R$ " + juros);
@@ -35,6 +40,7 @@ public class ContaCorrente extends Conta {
 
     }
 
+    // Método que atualiza os saldos nas funcionalidades da conta corrente
     static Scanner scanner = new Scanner(System.in);
     public static void consultarSaldoContaCorrente(int numeroConta, ContaCorrente cc1, ContaCorrente cc2) {
         System.out.println("Hoje é qual DIA do mês? ");
@@ -65,7 +71,7 @@ public class ContaCorrente extends Conta {
         }
     }
 
-
+    // Método que deposita valores na funcionalidade conta corrente
     public static void depositarContaCorrente(int numeroConta, double valor, ContaCorrente cc1, ContaCorrente cc2) {
         if (cc1.getNumeroConta() == numeroConta) {
             cc1.depositar(valor);
@@ -80,6 +86,9 @@ public class ContaCorrente extends Conta {
         }
     }
 
+    //método que realiza saques. Utilizado nas funcionalidades que apresentam esse comportamento típico de 'debitar'
+    //polimorfismo sobreposição
+    //método herdado da classe abstrata Conta
     @Override
     public boolean sacar(double valor) {
         if (valor <= saldo) {
@@ -103,6 +112,7 @@ public class ContaCorrente extends Conta {
         return false;
     }
 
+    //método que realiza saques.
     public static void sacarContaCorrente(int numeroConta, double valor, ContaCorrente cc1, ContaCorrente cc2) {
         if (cc1.getNumeroConta() == numeroConta) {
             if (cc1.sacar(valor)) {
@@ -117,7 +127,8 @@ public class ContaCorrente extends Conta {
         }
     }
 
-
+    //os próximos 3 métodos são para realizar transferências: entre contas correntes, para poupança, e para conta investimento
+    //polimorfismo sobrecarga (alterada a assinatura)
     public static void transferir(ContaCorrente contaOrigem, ContaCorrente contaDestino, double valorTransf) {
         if (valorTransf <= contaOrigem.getSaldo() + contaOrigem.getLimite()) {
             contaOrigem.setSaldo(contaOrigem.getSaldo() - valorTransf);
@@ -154,6 +165,7 @@ public class ContaCorrente extends Conta {
         }
     }
 
+    //método usado na classe Cartão de cŕedito, que permite pagar a fatura mensal com recursos da conta corrente.
     public void debitarDoLimite(double valor) {
         saldo -= valor;
     }

@@ -2,6 +2,7 @@ package entidades;
 import java.util.Scanner;
 
 public class ContaInvestimento extends Conta {
+    //atributos da classe e suas inicializações: taxas dos rendimentos das opções de investimento, saldos das opçoes de investimento, e saldo da conta Investimento
     private static final double TXRENT_LCI = 0.02;
     private static final double TXRENT_CDB = 0.05;
     private static final double TXRENT_RENDA_FIXA = 0.07;
@@ -16,16 +17,19 @@ public class ContaInvestimento extends Conta {
     private static double saldoInvestimento = 0;
 
 
+    //método construtor da classe
     public ContaInvestimento(int numeroConta) {
         super(numeroConta);
     }
 
 
+    //método getter (setter não gerado por não ter uso no código)
     public double getSaldoInvestimento() {
         return saldoInvestimento;
     }
 
 
+    //método que apresenta ao cliente as opções de investimento disponíveis no portfólio, com suas características.
     public static void listarOpcoesInvestimento() {
         System.out.println("-------------------------------------------------------------------------------------------");
         System.out.println("* LCI-Letras de Crédito Imobiliário");
@@ -56,6 +60,7 @@ public class ContaInvestimento extends Conta {
         System.out.println("-------------------------------------------------------------------------------------------");
     }
 
+    //método que apresenta os saldos atuais da carteira do cliente.
     public static void verificarSaldoInv() {
         System.out.println("- Saldo disponível na conta investimento: R$ " + saldoInvestimento);
         System.out.println("- Saldo da aplicação LCI: R$ " + saldoLCI);
@@ -64,9 +69,12 @@ public class ContaInvestimento extends Conta {
         System.out.println("- Saldo da aplicação Fundo de Ações da Bolsa de Valores Brasileira: R$ " + saldoFundoAcoes);
     }
 
+    //método para 'depositar' valores na conta investimento.
     public void depositar(double valor) {
         saldoInvestimento += valor;
     }
+
+    //método para realizar aplicações financeiras, montando a carteira do cliente.
     public static void aplicarContaInvestimento() {
 
         Scanner scanner = new Scanner(System.in);
@@ -138,8 +146,10 @@ public class ContaInvestimento extends Conta {
         } else {
             System.out.println(">>> Saldo insuficiente na conta investimento.");
         }
-    } //Fim do método para Realizar Aplicações na carteira do cliente
+    }
 
+    //método para efetuar resgates da carteira do cliente.
+    //o saldo resgatado é enviado para a conta corrente principal do cliente.
     public static void resgatarContaInvestimento(ContaCorrente contaCorrente) {
 
         Scanner scanner = new Scanner(System.in);
@@ -196,9 +206,10 @@ public class ContaInvestimento extends Conta {
             contaCorrente.depositar(valorResgatado);
             System.out.println(">>> Valor creditado em Conta Corrente.");
             }
-    } //Fim do método para Realizar Resgates na carteira do cliente
+    }
 
 
+    //método para calcular os rendimentos financeiros e as cobranças de impostos, tarifas e taxas das opções de investimento
     @Override
     public void calcularRendimento() {
         if (saldoCDB > 0) {

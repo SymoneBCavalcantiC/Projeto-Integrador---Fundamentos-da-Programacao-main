@@ -1,12 +1,13 @@
 package entidades;
-
 import java.util.Scanner;
 
 public class ContaPoupanca extends Conta {
+    //atributos da classe: saldo da poupança e os índices de remuneração.
     private final double taxaDeRendimento;
     private final double taxaReferencial;
     private double saldoPoupanca;
 
+    //método construtor da classe, contendo as inicializações.
     public ContaPoupanca(int numeroConta) {
         super(numeroConta);
         this.taxaDeRendimento = 0.02;
@@ -14,6 +15,7 @@ public class ContaPoupanca extends Conta {
         this.saldoPoupanca = 0;
     }
 
+    //métodos getters e setters
     public double getSaldoPoupanca() {
         return saldoPoupanca;
     }
@@ -23,11 +25,14 @@ public class ContaPoupanca extends Conta {
     }
 
 
+    //método para depositar valores nas contas poupanças
+    //Herdado da classe abstrata Conta (mãe)
     @Override
     public void depositar(double valor) {
         this.saldoPoupanca += valor;
     }
 
+    //método que efetua depósito nas contas poupanças (aplicação).
     public static void aplicarContaPoupanca(int numeroConta, double valor, ContaPoupanca cp1, ContaPoupanca cp2) {
         if (cp1.getNumeroConta() == numeroConta) {
             cp1.depositar(valor);
@@ -42,6 +47,8 @@ public class ContaPoupanca extends Conta {
         }
     }
 
+    //método para sacar valores das contas poupanças
+    //Herdado da classe abstrata Conta (mãe)
     @Override
     public boolean sacar(double valor) {
         if (valor <= this.saldoPoupanca) {
@@ -52,6 +59,7 @@ public class ContaPoupanca extends Conta {
         }
     }
 
+    //método que efetua saques das contas poupanças (resgates).
     public static void resgatarContaPoupanca(int numeroConta, double valor, ContaPoupanca cp1, ContaPoupanca cp2) {
         if (cp1.getNumeroConta() == numeroConta) {
             cp1.sacar(valor);
@@ -66,7 +74,7 @@ public class ContaPoupanca extends Conta {
         }
     }
 
-
+    //método que permite ao cliente consultar seus saldos das contas poupanças
     public static void consultarSaldoPoupanca(int numeroConta, ContaPoupanca cp1, ContaPoupanca cp2) {
         if (cp1.getNumeroConta() == numeroConta) {
             System.out.println(">>> Saldo atual da Poupança n. " + cp1.getNumeroConta() + " é: R$ " + cp1.getSaldoPoupanca());
@@ -77,6 +85,7 @@ public class ContaPoupanca extends Conta {
         }
     }
 
+    //método que realiza as atualizações do saldo, gerando os rendimentos de juros e correção monetária
     @Override
     public void atualizarSaldo() {
         double jurosPoupanca = getSaldoPoupanca() * taxaDeRendimento;
@@ -87,6 +96,7 @@ public class ContaPoupanca extends Conta {
         System.out.println(">>> Juros: R$ " + jurosPoupanca + " ||  Correção Monetária: R$ " + correcaoMonetaria );
     }
 
+    //método que efetua a atualização uma vez ao mês (no dia 1)
     static Scanner scanner = new Scanner(System.in);
 
     public static void atualizarRendimento(int numeroConta, ContaPoupanca cp1, ContaPoupanca cp2) {
