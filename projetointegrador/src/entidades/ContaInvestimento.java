@@ -27,33 +27,33 @@ public class ContaInvestimento extends Conta {
 
 
     public static void listarOpcoesInvestimento() {
-        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------");
         System.out.println("* LCI-Letras de Crédito Imobiliário");
         System.out.println("- Risco: Baixíssimo");
         System.out.println("- Rentabilidade mensal: 2% ao mês");
-        System.out.println("- Não há tarifas, imposto de renda, taxa de administração ou taxa de corretagem");
-        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("- Não há cobrança de tarifas, imposto de renda, taxa de administração ou taxa de corretagem");
+        System.out.println("-------------------------------------------------------------------------------------------");
         System.out.println("* CDB-Certificado de Depósito Bancário");
         System.out.println("- Risco: Baixo");
         System.out.println("- Rentabilidade mensal: 5% ao mês");
         System.out.println("- Imposto de Renda: 27,5% sobre o rendimento mensal");
-        System.out.println("- Não há tarifas, taxa de administração ou taxa de corretagem");
-        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("- Não há cobrança de tarifas, taxa de administração ou taxa de corretagem");
+        System.out.println("-------------------------------------------------------------------------------------------");
         System.out.println("* Fundo de Renda Fixa Tradicional");
         System.out.println("- Risco: Médio");
         System.out.println("- Rentabilidade mensal: 7% ao mês");
         System.out.println("- Imposto de Renda: 27,5% sobre o rendimento mensal");
         System.out.println("- Taxa de Administração: R$ 10");
-        System.out.println("- Não há tarifas ou taxa de corretagem");
-        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("- Há cobrança de tarifa. Não há cobrança de taxa de corretagem");
+        System.out.println("-------------------------------------------------------------------------------------------");
         System.out.println("* Fundo de Ações da Bolsa de Valores Brasileira");
         System.out.println("- Risco: Alto");
         System.out.println("- Rentabilidade mensal: 10% ao mês");
         System.out.println("- Imposto de Renda: 27,5% sobre o rendimento mensal");
         System.out.println("- Taxa de Administração: R$ 10");
         System.out.println("- Taxa de Corretagem: 1% sobre o valor aplicado");
-        System.out.println("- Não há tarifas");
-        System.out.println("---------------------------------------------------------------------------------");
+        System.out.println("- Há cobrança de tarifa.");
+        System.out.println("-------------------------------------------------------------------------------------------");
     }
 
     public static void verificarSaldoInv() {
