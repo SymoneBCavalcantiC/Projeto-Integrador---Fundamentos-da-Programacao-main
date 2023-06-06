@@ -2,7 +2,7 @@ package entidades;
 public abstract class Conta {
     //atributos da classe que serão herdados pelas classes filhas: Conta Corrente, Conta Poupança e Conta Investimento
     private int numeroConta;
-    public double saldo;
+    protected double saldo;
 
     //método construtor da classe
     public Conta(int numeroConta, double saldo) {

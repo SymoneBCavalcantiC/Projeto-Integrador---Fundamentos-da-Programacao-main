@@ -106,7 +106,7 @@ public class ContaCorrente extends Conta {
         } else {
             System.out.println(">>> Saldo insuficiente!");
             System.out.println(">>> O valor máximo que pode ser sacado é: R$ " + saldo );
-            System.out.println(">>> Saldo atual: R$ " + saldo + " | Limite atual: R$ " + getLimite());
+            System.out.println(">>> Saldo atual: R$ " + saldo + " | Limite atual: R$ " + limite);
             System.out.println("Saldo disponível para saque: R$ " + (saldo + limite));
         }
         return false;
